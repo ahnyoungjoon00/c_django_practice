@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}   
+
+<h3>상품 상세 조회</h3>
+<table id="prd_detail">
+    <tr><th>상품번호</th><td>{{product.prdno}}</td></tr>
+    <tr><th>상품명</th><td>{{product.prdname}}</td></tr>
+    <tr><th>가격</th><td>{{product.prdprice}}</td></tr>
+    <tr><th>제조회사</th><td>{{product.prdmaker}}</td></tr>
+    <tr><th>색상</th><td>{{product.prdcolor}}</td></tr>
+    <tr><th>카테고리번호</th><td>{{product.ctgno}}</td></tr>
+</table>
+
+{% endblock content %}

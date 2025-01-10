@@ -1,0 +1,23 @@
+<nav>
+    <ul>
+        <li><a href="{% url 'index' %}">HOME</a></li>
+        <li><a href="{% url 'product_list' %}">상품정보조회</a></li>
+        <li><a href="{% url 'product_insert' %}">상품 등록</a></li>
+        <li><a href="{% url 'product_search_form' %}">상품 검색</a></li>
+        <li><a href="{% url 'product_search_form2' %}">상품 검색2</a></li>
+<!-- users.is_authenticated는 login기능 사용하면 자동 전달되는 
+ data의 key user에 저장된 속성중의 하나, 로그인된 상태인지 확인하는 상태속성 -->
+        {% if user.is_authenticated %}
+        <!-- 로그인 상태인 경우 출력 -->
+            <li><a href="">{{ user.username }} 로그인 성공</a></li>
+            <li><a href="{%url 'sign_out'%}">로그아웃</a></li>
+        {% else %}
+        <!-- 로그아웃 상태인 경우 출력 -->
+            <li><a href="{%url 'sign_in'%}">로그인</a></li>
+            <li><a href="{%url 'sign_in2'%}">로그인2</a></li>
+
+            <li><a href="{%url 'sign_up'%}">회원가입</a></li>
+            <li><a href="{%url 'sign_up2'%}">회원가입2</a></li>
+        {% endif %}
+    </ul>
+</nav>

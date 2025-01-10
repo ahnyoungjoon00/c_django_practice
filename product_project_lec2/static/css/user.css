@@ -1,0 +1,51 @@
+#login_box label {
+    display: inline-block;
+    width: 120px;
+    background-color: #dc3030;
+    color:white;
+}
+#login_box button{
+    background-color: #dc3030;
+    width: 80px;
+    height: 30px;
+    color:white;
+    border-radius: 5px;
+}
+
+/* 회원가입1 */
+#form_tbl th{
+    background-color: #dc3030;
+    color:white;
+    width: 100px;
+    text-align: right;
+    padding-right: 20px;
+  }
+ 
+  #form_tbl td input {
+    border: solid 1px #dc3030;
+    width: 300px;
+    height: 30px;
+    box-shadow: 0 1px 1px 0;
+  }
+ 
+  #form_btn {
+    background-color: #dc3030;
+    width: 80px;
+    height: 40px;
+    color:white;
+    border-radius: 5px;
+  }
+ 
+ 
+  h3 {
+    color:red;
+  }
+ 
+  .btn {
+    background-color: #f3abab;
+    width: 100px;
+    height: 35;
+    color:black;
+    border-radius: 5px;
+    font-size: 12px;
+  }

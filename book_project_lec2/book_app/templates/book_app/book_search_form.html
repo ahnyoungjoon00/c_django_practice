@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}   
+
+<h2>도서 검색</h2>
+<form id='prdSearchFrm' method="post" action="#">
+    {% csrf_token %}
+    <select name="type">
+        <option value="">검색조건 선택</option>
+        <option value="prd_name">도서명</option>
+        <option value="prd_maker">저자</option>
+    </select>
+    <input type="text" name="keyword">
+    <input type="submit" value="검색">
+</form><br><br>
+
+
+    <table id="prd_list">
+    <tr>
+        <th>도서번호</th>
+        <th>도서명</th>
+        <th>저자</th>
+        <th>도서가격</th>
+        <th>출판일</th>
+        <th>재고</th>
+	<th>출판사번호</th>
+    </tr>
+    {% for prd in prd_list %}
+    <tr>
+        <td><a href="{% url 'book_detail' book.book_no %}">{{ book.book_no }}</a></td>
+        <td>{{ book.bookname }}</td>
+	<td>{{ book.bookauthor }}</td>
+        <td>{{ book.bookprice|intcomma }}</td>
+        <td>{{ book.bookdate}}</td>
+        <td>{{ book.bookstock }}</td>
+        <td>{{ book.pubno }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+{% endblock content %}

@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+{%load humanize%}
+
+{% block content %}
+   <h2>도서상품 정보 조회</h2>
+   <table id="prd_list">
+    <tr>
+        <th>도서번호</th>
+        <th>도서명</th>
+        <th>저자</th>
+        <th>도서가격</th>
+        <th>출판일</th>
+        <th>재고</th>
+	    <th>출판사</th>
+        <th>수정</th>
+        <th>삭제</th>
+    </tr>
+    {%for book in books%}
+    <tr>
+        <td><a href="{%url 'book_detail' book.bookno%}">{{book.bookno}}</a></td>
+        <td>{{book.bookname}}</td>
+        <td>{{book.bookauthor}}</td>
+        <td>{{book.bookprice|intcomma}}</td>
+        <td>{{book.bookdate}}</td>
+        <td>{{book.bookstock}}</td>
+	    <td>{{book.pubno.pubname}}</td>
+        {% comment %} 외래키로 참조하는 테이블의 필드값을 반환 {% endcomment %}
+        <td><a href="{%url 'book_update' book.bookno%}">
+            <button class='btn'>수정</button></a></td>
+        <td><a href="{%url 'book_delete' book.bookno%}" 
+                onclick="return confirm('삭제하시겠습니까?')">
+            <button class='btn'>삭제</button></a></td>
+    </tr>
+    {%endfor%}
+
+</table>
+{% endblock content %}

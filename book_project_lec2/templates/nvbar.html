@@ -1,0 +1,18 @@
+<nav>
+    <ul>
+        <li><a href="{% url 'index'%}">HOME</a></li>
+        <li><a href="{% url 'book_list' %}">도서 정보 조회</a></li>
+        <li><a href="{% url 'book_insert' %}">도서 등록</a></li>
+        <li><a href="{% url 'book_search_form_a' %}">도서 검색(출판사포함)</a></li>
+
+        {%if user.is_authenticated%}
+        <li><a href="">{{user.username}}로그인 성공</a></li>
+        <li><a href="{% url 'sign_out' %}">로그아웃</a></li>
+        {%else%}
+        <li><a href="{% url 'sign_in' %}">로그인</a></li>
+        <li><a href="{% url 'sign_in2' %}">로그인2</a></li>
+
+        <li><a href="">회원가입</a></li>
+        {%endif%}
+    </ul>
+</nav>

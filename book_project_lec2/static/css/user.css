@@ -1,0 +1,13 @@
+#login_box label {
+    display: inline-block;
+    width: 120px;
+    background-color: #dc3030;
+    color:white;
+}
+#login_box button{
+    background-color: #dc3030;
+    width: 80px;
+    height: 30px;
+    color:white;
+    border-radius: 5px;
+}

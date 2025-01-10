@@ -1,0 +1,23 @@
+{% load humanize %}
+    <table id="prd_list">
+    <tr>
+        <th>도서번호</th>
+        <th>도서명</th>
+        <th>저자</th>
+        <th>도서가격</th>
+        <th>출판일</th>
+        <th>재고</th>
+	<th>출판사번호</th>
+    </tr>
+    {% for prd in prd_list %}
+    <tr>
+        <td><a href="{% url 'book_detail' book.book_no %}">{{ book.book_no }}</a></td>
+        <td>{{ book.bookname }}</td>
+	<td>{{ book.bookauthor }}</td>
+        <td>{{ book.bookprice|intcomma }}</td>
+        <td>{{ book.bookdate}}</td>
+        <td>{{ book.bookstock }}</td>
+        <td>{{ book.pubno }}</td>
+    </tr>
+    {% endfor %}
+</table>

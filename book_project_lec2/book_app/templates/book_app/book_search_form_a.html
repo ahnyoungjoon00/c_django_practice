@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+
+<script>
+    // 출판사 선택시
+    // db로부터 출판사데이터를 받아서 select 태그에 option으로 구성
+    // 다른 검색 조건이면 input 태그로 구성
+
+    function changeInput(){
+        var sel = document.getElementById("type");
+        var sp = document.getElementById("key");
+        if(sel.value == 'publisher'){
+            //id가 key인 span 태그에 select 태그 구성
+            sp.innerHTML="";
+            str_tag='<select name="keyword">'
+            {%for pub in publist%}
+                str_tag += '<option value="{{pub}}">{{pub}}</option>'
+            {%endfor%}
+            str_tag+='</select>'
+            sp.innerHTML=str_tag
+        } else { //출판사가 아닌 나머지 선택이면
+            //input 태그를 span태그에 구성
+            sp.innerHTML="";
+            str_tag='<input type="text" name="keyword">';
+            sp.innerHTML = str_tag
+        };
+    } 
+</script>
+
+
+<h2>도서 검색</h2>
+<form id='prdSearchFrm' method="post" action="{%url 'book_search_a'%}">
+    {% csrf_token %}
+    {% comment %} select 태그에 선택변화가 일어나면 changeInput 함수 호출 {% endcomment %}
+    <select name="type" id="type" onchange="changeInput()">
+        <option value="">검색조건 선택</option>
+        <option value="bookname">도서명</option>
+        <option value="bookauthor">저자</option>
+        <option value="publisher">출판사</option> 
+        {% comment %} 출판사 외래키로 설정 : 출판사명을 표현해서 선택하게 진행해야 함 {% endcomment %}
+    </select>
+    {% comment %} input 태그 <-> select 태그 변환 : keyword input 태그 영역 필요 
+                  div 태그는 block 태그, span 태그 inline 태그 ->내부 데이터 영역만큼만 차지
+    {% endcomment %}
+    <span id='key'><input type="text" name="keyword"></span>
+    <input type="submit" value="검색">
+</form><br><br>
+
+{%if book_list %}
+    <table id="prd_list">
+    <tr>
+        <th>도서번호</th>
+        <th>도서명</th>
+        <th>저자</th>
+        <th>도서가격</th>
+        <th>출판일</th>
+        <th>재고</th>
+	<th>출판사번호</th>
+    </tr>
+    {% for book in book_list %}
+    <tr>
+        <td><a href="{% url 'book_detail' book.bookno %}">{{ book.bookno }}</a></td>
+        <td>{{ book.bookname }}</td>
+	    <td>{{ book.bookauthor }}</td>
+        <td>{{ book.bookprice|intcomma }}</td>
+        <td>{{ book.bookdate}}</td>
+        <td>{{ book.bookstock }}</td>
+        <td>{{ book.pubno }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{%endif%}
+{% endblock content %}

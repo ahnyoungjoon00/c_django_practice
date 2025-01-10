@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}   
+
+<h3>도서상품 상세 조회</h3>
+<table id="prd_detail">
+    <tr><th>도서번호</th><td>{{book.bookno}}</td></tr>
+    <tr><th>도서명</th><td>{{book.bookname}}</td></tr>
+    <tr><th>저자</th><td>{{book.bookauthor}}</td></tr>
+    <tr><th>도서가격</th><td>{{book.bookprice}}</td></tr>
+    <tr><th>출판일</th><td>{{book.bookdate}}</td></tr>
+    <tr><th>재고</th><td>{{book.bookstock}}</td></tr>
+    <tr><th>출판사</th><td>{{book.pubno.pubname}}</td></tr>
+</table>
+
+{% endblock content %}

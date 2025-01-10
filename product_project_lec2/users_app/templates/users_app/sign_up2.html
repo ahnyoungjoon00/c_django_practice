@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content  %}
+<div id="signup_box">
+    <h3>회원가입2</h3>
+    <form id="joinform" method="POST">
+        {% csrf_token %}
+        <div><label class='lbl'>ID</label> <input type="text" name="username"></div><br>
+        <div><label class='lbl'>비밀번호</label> <input type="password" name="password" id="password"></div><br>
+        <div><label class='lbl'>비밀번호확인</label> <input type="password" id="password2"></div><br>
+        <div><label class='lbl'>이메일</label> <input type="text" name="email" id="email"></div><br>
+        <div><label class='lbl'>성명</label> <input type="text" name="user_name"></div><br>
+        <div><label class='lbl'>전화</label> <input type="text" name="user_phone"></div><br>
+        <div><label class='lbl'>주소</label> <input type="text" name="user_address"></div><br><br>
+        <div><button type='button' onclick="test()" class='btn'>완료</button>
+    </form>
+</div>
+{% endblock content  %}

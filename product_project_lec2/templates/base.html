@@ -1,0 +1,26 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/css/product.css'%}">
+    <link rel="stylesheet" href="{% static '/css/user.css'%}">
+
+    <script src="{%static '/js/jquery-3.7.1.min.js'%}"></script>
+    <script src="{%static '/js/ajax_test2.js'%}"></script>
+    <script src="{%static '/js/product_search2.js'%}"></script>
+    <script src="{%static '/js/user.js'%}"></script>
+
+    <title>base 페이지</title>
+</head>
+<body>
+    <div id="wrap">
+        {% include "nvbar.html" %}
+        <hr>
+        {% block content%}
+
+        {% endblock content%}
+    </div>    
+</body>
+</html>

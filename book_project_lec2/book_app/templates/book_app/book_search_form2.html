@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %} 
+
+<h2>도서 검색2</h2>
+<form id='prdSearchFrm2' method="post">
+    {% csrf_token %}
+    <select name="type" id="type">
+        <option value="">검색조건 선택</option>
+        <option value="prd_name">도서명</option>
+        <option value="prd_maker">저자</option>
+    </select>
+    <input type="text" name="keyword" id="keyword">
+    <input type="submit" value="검색">
+</form><br><br>
+
+{% comment %} 검색 결과 출력할 div {% endcomment %}
+<div id="searchResultBox"></div>
+
+{% endblock content %}
